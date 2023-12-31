@@ -5,3 +5,5 @@
 可以配合[Masuda.QQNT(C#)](https://github.com/ssccinng/Masuda.QQNT)二次开发
 
 依赖于LLAPI插件
+
+可以在config.json中修改端口号 ip等
