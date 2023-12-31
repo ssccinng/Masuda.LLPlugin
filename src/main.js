@@ -13,17 +13,39 @@ const WebSocket = require('ws');
 
 // 加载插件时触发
 function onLoad(plugin) {
-  const wss = new WebSocket.Server({ port: 8080 });
+  let config = getConfig();
+  let ip = config.host.split(":")[0];
+  let port = config.host.split(":")[1];
+  let auth = false
+  const wss = new WebSocket.Server({ port: port, host: ip });
   wss.on('connection', ws => {
     ws.on('message', message => {
+     
+
+      ws.send(`Echo: ${message}[end]`)
+      if (!auth) {
+        let mm = message.toLocaleString()
+        if (mm.startsWith("key:"))
+        {
+
+          if (mm.replace("key:", "") != config.key && config.key != "") {
+            ws.send(`key error![end]`);
+            ws.close();
+            return;
+          }
+          else {
+            auth = true;
+            ws.send(`auth success![end]`);
+          }
+        }
+      }
+      
 
       BrowserWindow.getAllWindows().forEach((window) => {
 
         window.webContents.send('client-sendData', message.toLocaleString());
       });
-
     });
-
   });
 
   let endFlag = "[end]";
@@ -71,10 +93,10 @@ function onLoad(plugin) {
   function getConfig() {
     let configText = readDataFile("config.json", "{}");
     let pluginConfig = JSON.parse(configText);
-    pluginConfig.monitors.forEach((item) => {
-      if (item.configKey)
-        Object.assign(item, pluginConfig.configDic[item.configKey]);
-    });
+    pluginConfig.host = pluginConfig.host || '127.0.0.1:8080';
+    pluginConfig.key = pluginConfig.key || '165423';
+
+    writeDataFile("config.json", JSON.stringify(pluginConfig, null, 2));
     return pluginConfig;
   }
 

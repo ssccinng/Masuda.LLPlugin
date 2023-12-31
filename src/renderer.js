@@ -32,8 +32,9 @@ async function initMonitor() {
     let accountInfo = await LLAPI.getAccountInfo();
 
     masuda.onClientSendData((event, data) => {
-
         let message = JSON.parse(data);
+
+        // return;
         switch (message.t) {
             case "SendGroupMessage":
                 LLAPI.sendMessage(
@@ -52,6 +53,7 @@ async function initMonitor() {
                     message.d.content);
             
             case "GetUserInfo":
+                masuda.sendData("test")
                 LLAPI.getUserInfo(message.d.uid).then((res) => {
                     masuda.sendData(JSON.stringify(
                         {
@@ -127,9 +129,11 @@ async function initMonitor() {
                                 sender: message.sender,
                                 peer: message.peer,
                                 msgId: message.raw.msgId,
+                                msgSeq: message.raw.msgSeq,
+                                msgTime: message.raw.msgTime,
                                 content: message .elements?.map((element) => {
                                     let e = { ...element };
-                                    delete e.raw
+                                    // delete e.raw
                                     return e;
                                 }),
                             }
@@ -139,7 +143,7 @@ async function initMonitor() {
                 }
             });
         } catch (error) {
-
+            // masuda.writeLog(`new messages error: ${error.message}}`);
         }
     });
 }  

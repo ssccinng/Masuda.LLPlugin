@@ -1,21 +1,21 @@
 {
     "manifest_version": 3,
     "type": "extension",
-    "name": "插件模板",
-    "slug": "plugin_template",
+    "name": "masuda",
+    "slug": "masuda",
     "description": "LiteLoaderQQNT的插件模板",
     "version": "0.1.0",
     "thumbnail": "./icon.png",
     "author": {
-        "name": "LiteLoaderQQNT",
-        "link": "https://github.com/LiteLoaderQQNT"
+        "name": "scixing",
+        "link": "https://github.com/ssccinng/Masuda.LLPlugin"
     },
     "repository": {
-        "repo": "LiteLoaderQQNT/LiteLoaderQQNT-Plugin-Template",
+        "repo": "https://github.com/ssccinng/Masuda.LLPlugin",
         "branch": "main",
         "use_release": {
             "tag": "latest",
-            "name": "Plugin-Template.zip"
+            "name": "masuda.zip"
         }
     },
     "platform": [

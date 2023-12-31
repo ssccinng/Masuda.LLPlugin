@@ -1,0 +1,22 @@
+{
+  "name": "liteloaderqqnt-plugin-template",
+  "version": "1.0.0",
+  "description": "LiteLoaderQQNT的插件模板，包含插件创建方法，编写建议，还有技巧  \r LiteLoaderQQNT本体：[LiteLoaderQQNT](https://github.com/mo-jinran/LiteLoaderQQNT)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiteLoaderQQNT/LiteLoaderQQNT-Plugin-Template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT-Plugin-Template/issues"
+  },
+  "homepage": "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT-Plugin-Template#readme",
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
