@@ -28,7 +28,6 @@ async function initMonitor() {
     window.testPromise = (p) =>
         p.then((res) => console.log(res)).catch((res) => console.error(res));
 
-    LLAPI.sendMessage({ "uid": "790890246", "guildId": "", "chatType": "group" }, [{ type: "text", content: "Hello world!1" }]);
     let accountInfo = await LLAPI.getAccountInfo();
 
     masuda.onClientSendData((event, data) => {
